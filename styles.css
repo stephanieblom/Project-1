@@ -39,13 +39,16 @@ body {
     margin-right: 0;
     /* margin: 0; */
 }
+.submitBtn {
+    /* width: 80%; */
+}
 .Btns {
     display: block;
     border-radius: 25px;
     padding: 10px;
     border-style: none;
     transition: all ease .4s;
-    width: 100%;
+    width: 50%;
     margin: 10px 0;
     border: 2px solid orange;
     /* min-width: 20%; */
@@ -60,7 +63,7 @@ body {
     padding: 10px;
     border-style: none;
 }
-.common {
+/* .common {
     width: 50%;
     padding: 20px;
     margin: 20px auto;
@@ -78,21 +81,49 @@ body {
     flex-direction: column;
     height: 40vh;
 
-}
+} */
 img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 .imgContent {
-    max-width: 30%;
-}
-.rowsContent {
-    display: flex;
-    flex-direction: row;
+    max-width: 50%;
 }
 /* .rowsContent {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 } */
 .hide{
     display:none;
+.viewPort {
+    width: 100%;
+    height: 100vh;
+    margin: 20px auto;
+    padding: 100px 0;
+}
+
+.favorite {
+    color: black;
+    text-decoration: none;
+    transition: all ease .4s;
+}
+.favorite:hover {
+    text-decoration: none;
+    color: orange;
+}
+.position-absolute {
+    top: 30px;
+    right: 20px;
+}
+.navbar-brand, .nav-item {
+    color: #3b3b3b;
+    transition: all ease .4s;
+    font-size: 1.3rem;
+
+}
+.navbar-brand:hover, .nav-item:hover {
+    color: orange;
+}
+.navbar-toggler-icon {
+    color: black;
 }
