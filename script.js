@@ -1,15 +1,17 @@
-
 let name = "";
 let imgURL = ""
+let description = ""
 let ingredients = [];
 let instructions = [];
+let favourites = [];
+let recipeURL = ""
 
 
 
+//pulling recipe data and appending information to html 
 function dataPull(){
-    console.log(`[data:Pull]`);
-    var recipeURL = $('#recipeURL').val();
-    console.log(`recipe URL: ${recipeURL}`);
+    recipeURL = $('#recipeURL').val();
+    console.log(`Pulling data for URL: ${recipeURL}`);
 
     var settings = {
         "async": true,
@@ -34,6 +36,7 @@ function dataPull(){
         imgURL = response[0].images[0];
         ingredients = response[0].ingredients;
         instructions = response[0].instructions[0].steps;
+        description = response[0].description;
 
         $(`#recipeTitle`).append(name);
     
@@ -53,13 +56,13 @@ function dataPull(){
     
         }
     
-        nutritionInfo();
+        //nutritionInfo();
     
     });
 
 }
 
-
+//ajax call pulling nutritional info on each ingredient 
 function nutritionInfo(){
 
     var settings = {
@@ -84,8 +87,35 @@ function nutritionInfo(){
 
 }
 
+//When user clicks the screen scrolls down to the card with recipe snippet 
+function scrollToRecipe(){
+
+    $('html,body').animate({
+        scrollTop: $(".detailContent").offset().top- $(window).height()/3},
+        'slow');
+
+}
+
+//Adds URL of recipe to array in local storage so user can access as a favourite for later
+function addFavourite(){
+
+    favourites.push(`${recipeURL}`)
+    localStorage.favourites = JSON.stringify( favourties );
+}
+
+if (localStorage.favourites == undefined ){
+    console.log(`Local storage is not yet defined: ${localStorage.favourites} once you add a favourite a variable will be created`);
+} else{
+    favourites = JSON.parse( localStorage.favourites );
+    console.log(`Local Storage: ${localStorage.favourites}`)
+}
+
+$(`.fav`).on("click", addFavourite);
+$(`.submitBtn`).on("click", scrollToRecipe);
+
 $.ready(function(){
 
 $(`.submitBtn`).on("click", dataPull);
+
 
 });
