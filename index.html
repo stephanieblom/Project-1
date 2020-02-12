@@ -25,13 +25,12 @@
         <section class="hero">
             <h1 class="title">Cooking For Dummies</h1>
             <div class="urlInput">
-                <input class="textArea" type="text" placeholder="Enter Your URL">
-                <button class="submitBtn Btns" >Lets Cook</button>
+                <input class="textArea" type="text" id="recipeURL" placeholder="Enter Your URL">
+                <button id= "submitBtn" onClick="dataPull()" class="submitBtn Btns">Lets Cook</button>
             </div>
         </section>
         <section class="recipeOverview box common">
             <div class="imgContent">
-                <img src="assets/amirali-mirhashemian-v2z6Yhp_6Gc-unsplash.jpg" alt="">
             </div>
             <div class="detailContent">
                 <h2 class="display-5">Recipe Title</h2>
@@ -63,7 +62,8 @@
         <section class="nutrientDetail rows common">
             <h3>Nutrition Values</h3>
         </section>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>        
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="script.js"></script>
