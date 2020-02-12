@@ -5,25 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/4b53ea2f0f.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div id="img"></div>
-    <h1>Ingredients:</h1>
-    <ul id="ingredientList"></ul>
-    <br>
-    <h1>Steps:</h1>
-    <ol id="instructionsList"></ol>
-    <br>
-    <h1>Nutrition Info:</h1>
-    <ul id="nutritionInfo"></ul>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <nav class=" navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Favorites</a>
+                </div>
+            </div>
+        </nav>
+        <section class="hero">
+            <h1 class="title">Cooking For Dummies</h1>
+            <div class="urlInput">
+                <input class="textArea" type="text" placeholder="Enter Your URL">
+                <button class="submitBtn Btns" >Lets Cook</button>
+            </div>
+        </section>
+        <section class="recipeOverview box common">
+            <div class="imgContent">
+                <img src="assets/amirali-mirhashemian-v2z6Yhp_6Gc-unsplash.jpg" alt="">
+            </div>
+            <div class="detailContent">
+                <h2 class="display-5">Recipe Title</h2>
+                <button class="Btns">Show Me</button>
+                <button class="Btns">Nutrition</button>
+            </div>
+        </section>
+        <section class="recipeDetail common">
+            <div class="rowsContent">
+                <div class="imgContent">
+                    <img src="assets/amirali-mirhashemian-v2z6Yhp_6Gc-unsplash.jpg" alt="">
+                </div>
+                <div class="ingredientList">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>something</li>
+                        <li>something</li>
+                        <li>something</li>
+                        <li>something</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="instructionDetail">
+                <h3>Instruction</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo fugiat tempore perferendis, blanditiis facere assumenda vero asperiores eius nisi reiciendis in nesciunt, laudantium tenetur, ad eligendi. Adipisci aliquid iste dicta?</p>
+            </div>
+            <button class="Btns">Start</button>
+        </section>
+        <section class="nutrientDetail rows common">
+            <h3>Nutrition Values</h3>
+        </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
