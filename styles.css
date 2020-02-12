@@ -1,0 +1,96 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background: #f0f0f0;
+}
+.title {
+    text-align: center;
+    padding: 30px;
+    margin: 60px 0;
+    /* margin: 0 auto; */
+} 
+.recipeBtn {
+    display: block;
+}
+.hero {
+    padding: 50px;
+    height: 100vh;
+    background-image: url(assets/heroA.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.urlInput {
+    display: flex;
+    flex-direction: column;
+    max-width: 65%;
+    max-width: 60%;
+    margin: 0 auto;
+}
+.textArea, .submitBtn {
+    /* width: 80%; */
+    padding: 10px;
+    border-radius: 25px;
+    margin: 10px;
+    border-style: none;
+    text-align: center;
+}
+.navbar {
+    width: 100%;
+    margin-right: 0;
+    /* margin: 0; */
+}
+.Btns {
+    display: block;
+    border-radius: 25px;
+    padding: 10px;
+    border-style: none;
+    transition: all ease .4s;
+    width: 100%;
+    margin: 10px 0;
+    border: 2px solid orange;
+    /* min-width: 20%; */
+    /* background: #fafafa; */
+}
+.Btns:hover {
+    color: white;
+    background: orange;
+    border: 2px solid orange;
+
+    border-radius: 25px;
+    padding: 10px;
+    border-style: none;
+}
+.common {
+    width: 50%;
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+.box {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    height: 40vh;
+}
+.rows{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+
+}
+img {
+    width: 100%;
+}
+.imgContent {
+    max-width: 30%;
+}
+.rowsContent {
+    display: flex;
+    flex-direction: row;
+}
+/* .rowsContent {
+    display: flex;
+    flex-direction: column;
+} */
+
