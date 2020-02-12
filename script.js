@@ -1,3 +1,21 @@
+var textArea = $("#textArea").val();
+var recipeOverview = $(".recipeOverview");
+var recipeDetail = document.querySelector('.recipeDetail');
+var nutrientDetail = document.querySelector(".nutrientDetail");
+
+$("#letscookBtn").on('click', showHideFunc);
+
+function showHideFunc(e){
+console.log('in the function');
+console.log('this is recipeDetail ' + recipeDetail.classList);
+// if( !textArea){
+//         $("#alertMsg").text("The input can not be empty!");
+// }else{
+    
+$('.recipeDetail').addClass('hide');
+$('.nutrientDetail').addClass('hide');
+}
+
 
 let ingredients = [];
 
@@ -16,22 +34,18 @@ var settings = {
 }
 
 $.ajax(settings).done(function (response) {
-    console.log(response);
-    console.log(response[0].ingredients);
-    console.log(response[0].instructions[0].steps);
+    // console.log(response);
+    // console.log(response[0].ingredients);
+    // console.log(response[0].instructions[0].steps);
 
-    let name = response[0].name;
-    let img = response[0].images[0];
-    ingredients = response[0].ingredients;
-    let instructions = response[0].instructions[0].steps;
-
-
+    // let name = response[0].name;
+    // let img = response[0].images[0];
+    // ingredients = response[0].ingredients;
+    // let instructions = response[0].instructions[0].steps;
 let name = "";
 let imgURL = ""
 let ingredients = [];
 let instructions = [];
-
-
 
 function dataPull(){
     console.log(`[data:Pull]`);
@@ -85,8 +99,6 @@ function dataPull(){
     });
 
 }
-
-
 function nutritionInfo(){
 
     var settings = {
@@ -114,5 +126,7 @@ function nutritionInfo(){
 $.ready(function(){
 
 $(`.submitBtn`).on("click", dataPull);
+
+});
 
 });
