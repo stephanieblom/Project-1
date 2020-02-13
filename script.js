@@ -2,10 +2,12 @@ var textArea = $("#textArea").val();
 var recipeOverview = $(".recipeOverview");
 var recipeDetail = document.querySelector('.recipeDetail');
 var nutrientDetail = document.querySelector(".nutrientDetail");
+var recipeSteps = document.querySelector(".recipeSteps");
 
-$("#letscookBtn").on('click', showHideFunc);
+$(".submitBtn").on('click', showHideFunc);
 
-function showHideFunc(e){
+function showHideFunc(){
+alert('alert the window');
 console.log('in the function');
 console.log('this is recipeDetail ' + recipeDetail.classList);
 // if( !textArea){
@@ -14,6 +16,7 @@ console.log('this is recipeDetail ' + recipeDetail.classList);
     
 $('.recipeDetail').addClass('hide');
 $('.nutrientDetail').addClass('hide');
+$('.recipeSteps').addClass('hide');
 }
 
 
@@ -162,4 +165,4 @@ $(`.submitBtn`).on("click", dataPull);
 
 });
 
-});
+
