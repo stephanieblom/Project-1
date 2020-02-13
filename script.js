@@ -9,6 +9,8 @@ let cookTime = "";
 
 
 
+
+
 //pulling recipe data and appending information to html 
 function dataPull(){
     recipeURL = $('#recipeURL').val();
@@ -175,8 +177,19 @@ if (localStorage.favourites == undefined ){
 }
 
 $(`.fa-heart-o`).on("click", switchFavourite);
+$("#firstStep").addClass("hide");
+
+$("#startBtn").on("click", addFirstStep)
+function addFirstStep(){
+    $("#firstStep").removeClass("hide");
+}
+
+
+
 
 $(`.submitBtn`).on("click", scrollToRecipe);
 $(`.submitBtn`).on("click", dataPull);
 $(`.submitBtn`).on("click", checkIfFavourite);
+
+
 
