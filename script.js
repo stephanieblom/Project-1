@@ -100,7 +100,7 @@ function scrollToRecipe(){
 function addFavourite(){
 
     favourites.push(`${recipeURL}`)
-    localStorage.favourites = JSON.stringify( favourties );
+    localStorage.favourites = JSON.stringify( favourites );
 }
 
 if (localStorage.favourites == undefined ){
@@ -110,12 +110,9 @@ if (localStorage.favourites == undefined ){
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
 
-$(`.fav`).on("click", addFavourite);
+$(`.favorite`).on("click", addFavourite);
+
+
 $(`.submitBtn`).on("click", scrollToRecipe);
-
-$.ready(function(){
-
 $(`.submitBtn`).on("click", dataPull);
 
-
-});
