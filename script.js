@@ -101,6 +101,8 @@ function addFavourite(){
 
     favourites.push(`${recipeURL}`)
     localStorage.favourites = JSON.stringify( favourites );
+
+    
 }
 
 if (localStorage.favourites == undefined ){
@@ -110,7 +112,7 @@ if (localStorage.favourites == undefined ){
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
 
-$(`.favorite`).on("click", addFavourite);
+$(`.fa-heart-o`).on("click", addFavourite);
 
 
 $(`.submitBtn`).on("click", scrollToRecipe);
