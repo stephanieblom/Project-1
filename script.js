@@ -3,6 +3,7 @@ let imgURL = ""
 let description = ""
 let ingredients = [];
 let instructions = [];
+let instructionIdx = 0;
 let favourites = [];
 let recipeURL = ""
 
@@ -111,11 +112,61 @@ if (localStorage.favourites == undefined ){
 }
 
 $(`.fav`).on("click", addFavourite);
-$(`.submitBtn`).on("click", scrollToRecipe);
+$(`#letsCookBtn`).on("click", scrollToRecipe);
 
-$.ready(function(){
+$(`#letsCookBtn`).on("click", dataPull);
 
-$(`.submitBtn`).on("click", dataPull);
+$(`#nextBtn`).on("click", nextStep);
+$(`#backBtn`).on("click", prevStep);
+
+$("#firstStep").addClass("hide");
+$("#startBtn").on("click", addFirstStep)
+$("#startBtn").on("click", scrollTosteps)
+function addFirstStep(){
+    $("#firstStep").removeClass("hide");
+    $("#backBtn").addClass("hide");
+    $('#stepIdx').text(`Step ${instructionIdx + 1 }`);
+    $(".detailSteps").text(`${instructions[instructionIdx]}`);
+}
+function scrollTosteps(){
+    $('html,body').animate({
+        scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
+        'slow');
+}
 
 
-});
+function nextStep(){
+    // alert(instructions[1]);
+    $("#backBtn").removeClass("hide");
+    if ( instructionIdx >= instructions.length - 1 ){
+        return;
+    }
+    
+    instructionIdx++;
+
+    console.log(`[nextStep] instructionIdx=${instructionIdx}`)
+    console.log("this is the list of " + instructions[instructionIdx])
+    $('#stepIdx').text(`Step ${instructionIdx + 1}`)
+    $('.detailSteps').text(`${instructions[instructionIdx]}`)
+}
+function prevStep(){
+    // alert(instructssions[1]);
+    if ( instructionIdx < 1 ){
+        return;
+    }
+    instructionIdx--;
+
+    console.log(`[nextStep] instructionIdx=${instructionIdx}`)
+    $('#stepIdx').text(`Step ${instructionIdx + 1}`)
+    $('.detailSteps').text(`${instructions[instructionIdx]}`)
+}
+
+
+//     // console.log(instructions[i]);
+// }
+// for (i=0; i<instructions.length; i++ ){
+//     $('.detailSteps').append(`<p>${instructions[i]}</p>`)
+// // 
+// }
+
+
