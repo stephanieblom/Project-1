@@ -1,24 +1,21 @@
-var textArea = $("#textArea").val();
-var recipeOverview = $(".recipeOverview");
-var recipeDetail = document.querySelector('.recipeDetail');
-var nutrientDetail = document.querySelector(".nutrientDetail");
-var recipeSteps = document.querySelector(".recipeSteps");
 
 $(".submitBtn").on('click', showHideFunc);
 
 function showHideFunc(){
-alert('alert the window');
-console.log('in the function');
-console.log('this is recipeDetail ' + recipeDetail.classList);
-// if( !textArea){
-//         $("#alertMsg").text("The input can not be empty!");
-// }else{
-    
 $('.recipeDetail').addClass('hide');
 $('.nutrientDetail').addClass('hide');
 $('.recipeSteps').addClass('hide');
 }
 
+$(".recipeBtn").on('click', recipeBtn)
+function recipeBtn(){
+    $('.recipeDetail').removeClass('hide');
+};
+
+$(".nutrientBtn").on('click', nutrientBtn);
+function nutrientBtn(){
+    $('.nutrientDetail').removeClass('hide');
+};
 
 let ingredients = [];
 
@@ -156,11 +153,9 @@ if (localStorage.favourites == undefined ){
 
 $(`.fa-heart-o`).on("click", addFavourite);
 
-$.ready(function(){
-
 $(`.submitBtn`).on("click", dataPull);
 
-});
+
 
 });
 
