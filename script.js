@@ -1,10 +1,11 @@
 let name = "";
-let imgURL = ""
-let description = ""
+let imgURL = "";
+let description = "";
 let ingredients = [];
 let instructions = [];
 let favourites = [];
-let recipeURL = ""
+let recipeURL = "";
+let cookTime = "";
 
 
 
@@ -31,25 +32,37 @@ function dataPull(){
         console.log(response);
         console.log(response[0].ingredients);
         console.log(response[0].instructions[0].steps);
+        console.log(response[0][`total-time`]);
     
         name = response[0].name;
         imgURL = response[0].images[0];
         ingredients = response[0].ingredients;
         instructions = response[0].instructions[0].steps;
         description = response[0].description;
+        cookTime = response[0][`total-time`];
+        cookTime = cookTime.slice(2,5);
 
+
+        $(`#recipeTitle`).html("")
         $(`#recipeTitle`).append(name);
     
+        $(`#recipeDescription`).html("")
         $(`#recipeDescription`).append(description);
+
+        $(`.cookingTime`).html("");
+        $(`.cookingTime`).append(cookTime);
     
+        $(`.imgContent`).html("");
         $(`.imgContent`).append(`<img src="${imgURL}" alt="Responsive picture of complete recipe" class="img-fluid">`)
     
+        $('#ingredientList').html("");
         for(var i=0; i < ingredients.length; i++){
     
             $('#ingredientList').append(`<li>${ingredients[i]}</li>`);
     
         }
     
+        $('#instructionsList').html("");
         for(var i=0; i < instructions.length; i++){
     
             $('#instructionsList').append(`<li>${instructions[i]}</li>`);
@@ -94,6 +107,23 @@ function scrollToRecipe(){
         scrollTop: $(".detailContent").offset().top- $(window).height()/3},
         'slow');
 
+}
+
+function checkIfFavourite(){
+    let pullFavourites = JSON.parse( localStorage.favourites );
+    let check = pullFavourites.indexOf(recipeURL);
+
+    if (check > 0){
+         //changing favourites icon at 2 spots on page 
+         var addClass = document.getElementById("changeHeart")
+         addClass.classList.add("fa-heart");
+         var removeClass = document.getElementById("changeHeart")
+         removeClass.classList.remove("fa-heart-o");
+         var addClass = document.getElementById("changeHeart2")
+         addClass.classList.add("fa-heart");
+         var removeClass = document.getElementById("changeHeart2")
+         removeClass.classList.remove("fa-heart-o");
+    }
 }
 
 //Adds URL of recipe to array in local storage so user can access as a favourite for later
@@ -148,4 +178,5 @@ $(`.fa-heart-o`).on("click", switchFavourite);
 
 $(`.submitBtn`).on("click", scrollToRecipe);
 $(`.submitBtn`).on("click", dataPull);
+$(`.submitBtn`).on("click", checkIfFavourite);
 
