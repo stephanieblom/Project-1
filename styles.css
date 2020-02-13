@@ -40,9 +40,9 @@ body {
     margin-right: 0;
     /* margin: 0; */
 }
-.submitBtn {
-    /* width: 80%; */
-}
+/* .submitBtn {
+    width: 80%;
+} */
 .Btns {
     display: block;
     border-radius: 25px;
@@ -108,6 +108,9 @@ img {
     display: flex;
     flex-direction: row;
 } */
+.hide{
+    display:none;
+}
 .viewPort {
     width: 100%;
     height: 100vh;

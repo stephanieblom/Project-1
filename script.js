@@ -1,3 +1,47 @@
+
+$(".submitBtn").on('click', showHideFunc);
+
+function showHideFunc(){
+$('.recipeDetail').addClass('hide');
+$('.nutrientDetail').addClass('hide');
+$('.recipeSteps').addClass('hide');
+}
+
+$(".recipeBtn").on('click', recipeBtn)
+function recipeBtn(){
+    $('.recipeDetail').removeClass('hide');
+};
+
+$(".nutrientBtn").on('click', nutrientBtn);
+function nutrientBtn(){
+    $('.nutrientDetail').removeClass('hide');
+};
+
+let ingredients = [];
+
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi",
+	"method": "POST",
+	"headers": {
+		"x-rapidapi-host": "mycookbook-io1.p.rapidapi.com",
+		"x-rapidapi-key": "3b8a7d5c9dmsh20b4f77d73d4977p127a4fjsndd1100cc381e",
+		"content-type": "text/plain",
+		"accept": "text/plain"
+	},
+	"data": "https://www.thewholesomedish.com/the-best-classic-chili/"
+}
+
+$.ajax(settings).done(function (response) {
+    // console.log(response);
+    // console.log(response[0].ingredients);
+    // console.log(response[0].instructions[0].steps);
+
+    // let name = response[0].name;
+    // let img = response[0].images[0];
+    // ingredients = response[0].ingredients;
+    // let instructions = response[0].instructions[0].steps;
 let name = "";
 let imgURL = "";
 let description = "";
@@ -10,9 +54,6 @@ let cookTime = "";
 
 
 
-
-
-//pulling recipe data and appending information to html 
 function dataPull(){
     recipeURL = $('#recipeURL').val();
     console.log(`Pulling data for URL: ${recipeURL}`);
@@ -248,5 +289,10 @@ function prevStep(){
 // }
 
 
+$(`.submitBtn`).on("click", dataPull);
+
+
+
+});
 
 

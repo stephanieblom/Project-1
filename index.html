@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cooking for Dummies</title>
-    <link rel="stylesheet" href="styles.css">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/4b53ea2f0f.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
         <nav class=" container-fluid navbar navbar-expand-lg ">
@@ -18,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link active" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Favorites</a>
+                    <a class="nav-item nav-link active" href="favorites.html"><i class="fa fa-heart" aria-hidden="true"></i> Favorites</a>
                 </div>
             </div>
         </nav>
@@ -29,17 +30,18 @@
                 <button class="submitBtn Btns mx-auto" id="letsCookBtn">Lets Cook</button>
             </div>
         </section>
+       
         <div class="viewPort">
             <section class="recipeOverview card col-lg-10 mx-auto">
                 <div class="card-body row">
                     <div class="imgContent col-lg-4">
                     </div>
                     <div class="detailContent col-lg-8">
-                        <h2 id="recipeTitle" class=""></h2>
-                        <p class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time</p><p class="cookingTime"></p>
-                        <p id="recipeDescription"></p>
-                        <button class="Btns">View Recipe</button>
-                        <button class="Btns">Nutrition</button>
+                        <h2 class="">Recipe Title</h2>
+                        <p class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odio facere, earum libero dolore recusandae culpa</p>
+                        <button class="Btns recipeBtn">View Recipe</button>
+                        <button class="Btns nutrientBtn">Nutrition</button>
                     </div>
                     <div class="col-1 position-absolute">
                         <a class="row favorite" ><i id = "changeHeart" class="fa fa-heart-o fa-lg fav" aria-hidden="true"></i></a>
