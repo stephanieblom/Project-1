@@ -97,11 +97,43 @@ function scrollToRecipe(){
 }
 
 //Adds URL of recipe to array in local storage so user can access as a favourite for later
-function addFavourite(){
+function switchFavourite(){
 
-    favourites.push(`${recipeURL}`)
-    localStorage.favourites = JSON.stringify( favourites );
+    if($( ".fav" ).hasClass( "fa-heart" ) == false ){
 
+        //add url to local storage
+        favourites.push(`${recipeURL}`)
+        localStorage.favourites = JSON.stringify( favourites );
+
+        //changing favourites icon at 2 spots on page 
+        var addClass = document.getElementById("changeHeart")
+        addClass.classList.add("fa-heart");
+        var removeClass = document.getElementById("changeHeart")
+        removeClass.classList.remove("fa-heart-o");
+        var addClass = document.getElementById("changeHeart2")
+        addClass.classList.add("fa-heart");
+        var removeClass = document.getElementById("changeHeart2")
+        removeClass.classList.remove("fa-heart-o");
+
+    } else if($( ".fav" ).hasClass( "fa-heart-o" ) == false ){
+
+        var addClass = document.getElementById("changeHeart")
+        addClass.classList.add("fa-heart-o");
+        var removeClass = document.getElementById("changeHeart")
+        removeClass.classList.remove("fa-heart");
+        var addClass = document.getElementById("changeHeart2")
+        addClass.classList.add("fa-heart-o");
+        var removeClass = document.getElementById("changeHeart2")
+        removeClass.classList.remove("fa-heart");
+
+        var removeIdx = favourites.indexOf(recipeURL);
+        var removedElements = favourites.splice(removeIdx, 1);
+        console.log(`removed: ${removedElements}`)
+        favourites.splice(removeIdx, 1); 
+
+        localStorage.favourites = JSON.stringify( favourites );
+
+    }
     
 }
 
@@ -112,8 +144,7 @@ if (localStorage.favourites == undefined ){
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
 
-$(`.fa-heart-o`).on("click", addFavourite);
-
+$(`.fa-heart-o`).on("click", switchFavourite);
 
 $(`.submitBtn`).on("click", scrollToRecipe);
 $(`.submitBtn`).on("click", dataPull);
