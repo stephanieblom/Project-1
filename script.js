@@ -40,9 +40,9 @@ function dataPull(){
 
         $(`#recipeTitle`).append(name);
     
+        $(`#recipeDescription`).append(description);
     
-    
-        $(`.imgContent`).append(`<img src="${imgURL}" alt="picture of complete recipe">`)
+        $(`.imgContent`).append(`<img src="${imgURL}" alt="Responsive picture of complete recipe" class="img-fluid">`)
     
         for(var i=0; i < ingredients.length; i++){
     
