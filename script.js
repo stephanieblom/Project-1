@@ -40,7 +40,7 @@ function dataPull(){
         instructions = response[0].instructions[0].steps;
         description = response[0].description;
         cookTime = response[0][`total-time`];
-        cookTime = cookTime.slice(2,5);
+        cookTime = cookTime.slice(2,10);
 
 
         $(`#recipeTitle`).html("")
