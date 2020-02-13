@@ -50,12 +50,6 @@ let instructions = [];
 let favourites = [];
 let recipeURL = ""
 
-<<<<<<< HEAD
-=======
-
-
-//pulling recipe data and appending information to html 
->>>>>>> master
 function dataPull(){
     recipeURL = $('#recipeURL').val();
     console.log(`Pulling data for URL: ${recipeURL}`);
@@ -108,11 +102,8 @@ function dataPull(){
     });
 
 }
-<<<<<<< HEAD
-=======
 
 //ajax call pulling nutritional info on each ingredient 
->>>>>>> master
 function nutritionInfo(){
 
     var settings = {
@@ -167,11 +158,8 @@ $.ready(function(){
 
 $(`.submitBtn`).on("click", dataPull);
 
-<<<<<<< HEAD
 });
 
 });
-=======
 
 });
->>>>>>> master

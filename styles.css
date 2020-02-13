@@ -3,9 +3,10 @@ body {
     background: #f0f0f0;
 }
 .title {
+    color: white;
     text-align: center;
     padding: 30px;
-    margin: 60px 0;
+    margin: 40px 0;
     /* margin: 0 auto; */
 } 
 .recipeBtn {
@@ -58,11 +59,18 @@ body {
     color: white;
     background: orange;
     border: 2px solid orange;
-
     border-radius: 25px;
     padding: 10px;
     border-style: none;
 }
+.cookingIcon {
+    /* min-width: 15%; */
+    max-width: 10%;
+    margin: 0 10px;
+}
+/* .icon {
+    width
+} */
 /* .common {
     width: 50%;
     padding: 20px;
@@ -98,7 +106,6 @@ img {
 .viewPort {
     width: 100%;
     height: 100vh;
-    margin: 20px auto;
     padding: 100px 0;
 }
 
@@ -112,7 +119,7 @@ img {
     color: orange;
 }
 .position-absolute {
-    top: 30px;
+    top: 20px;
     right: 20px;
 }
 .navbar-brand, .nav-item {
@@ -126,4 +133,15 @@ img {
 }
 .navbar-toggler-icon {
     color: black;
+}
+.recipeSteps {
+    background-image: linear-gradient(45deg, #8fcfe3, #d6ffed);
+    /* height: 85vh; */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 50px auto;
+    filter: drop-shadow(1px 1px 5px rgb(138, 140, 141));
+}
+.card {
+    filter: drop-shadow(1px 1px 5px rgb(138, 140, 141));
 }
