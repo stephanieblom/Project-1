@@ -8,6 +8,8 @@ let recipeURL = ""
 
 
 
+
+
 //pulling recipe data and appending information to html 
 function dataPull(){
     recipeURL = $('#recipeURL').val();
@@ -112,9 +114,18 @@ if (localStorage.favourites == undefined ){
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
 
+$("#firstStep").addClass("hide");
+
+$("#startBtn").on("click", addFirstStep)
+function addFirstStep(){
+    $("#firstStep").removeClass("hide");
+}
+
 $(`.fa-heart-o`).on("click", addFavourite);
 
 
 $(`.submitBtn`).on("click", scrollToRecipe);
 $(`.submitBtn`).on("click", dataPull);
+
+
 

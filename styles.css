@@ -90,6 +90,10 @@ body {
     height: 40vh;
 
 } */
+
+.hide {
+    display: none;
+}
 img {
     max-width: 100%;
     height: auto;

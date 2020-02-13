@@ -1,0 +1,18 @@
+.hero{
+    background-image: url(https://images.media-allrecipes.com/ar-images/profiles/covers/salsa-mexican-food-1300x200.jpg);
+    background-repeat: repeat-x;
+    background-size: 80em;
+    height: 25vh;
+}
+
+h1{
+    text-align: center;
+   
+    
+}
+.Btns{
+    background-color: rgb(96,96,212);
+}
+.Del{
+    background-color: rgb(96,96,212);
+}
