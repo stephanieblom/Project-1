@@ -68,6 +68,9 @@ body {
     max-width: 10%;
     margin: 0 10px;
 }
+.hide {
+    display: none;
+}
 /* .icon {
     width
 } */

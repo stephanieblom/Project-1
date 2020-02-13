@@ -26,7 +26,7 @@
             <h1 class="title display-4">Cooking For Dummies</h1>
             <div class="urlInput">
                 <input id="recipeURL" class="textArea" type="text" placeholder="Enter Your URL">
-                <button class="submitBtn Btns mx-auto">Lets Cook</button>
+                <button class="submitBtn Btns mx-auto" id="letsCookBtn">Lets Cook</button>
             </div>
         </section>
         <div class="viewPort">
@@ -76,24 +76,23 @@
                             </ol>
                         </p>
                     </div>
-                    <button class="Btns mx-auto">Start</button>
+                    <button class="Btns mx-auto" id="startBtn">Start</button>
                 </div>
             </div>
         </section>
-        <div class="">
+        <div class="hide" id="firstStep">
             <section class="recipeSteps col-lg-10 mx-auto">
                 <div class="card-body row mx-auto">
                     <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">
                 </div>
                 <div class="card-body row">
-                    <h2 class="col-lg mx-auto text-center display-4">Step 1</h2>
+                    <h2 class="col-lg mx-auto text-center display-4" id="stepIdx"></h2>
                 </div>
-                <div class="card-body detailContent mx-auto text-center">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odio facere, earum libero dolore recusandae culpa 
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur exercitationem iusto perspiciatis ea aliquid dolorum mollitia eius odio non eaque temporibus voluptatum quos magnam nobis sit error libero, rerum aut.                    
+                <div class="card-body detailSteps detailContent mx-auto text-center">
                 </div>
                 <div class="card-body">
-                    <button class="submitBtn Btns mx-auto h4">next</button>
+                    <button class="submitBtn Btns mx-auto h4" id="backBtn">Back</button>
+                    <button class="submitBtn Btns mx-auto h4" id="nextBtn">Next</button>
                 </div>
             </section>
         </div>
