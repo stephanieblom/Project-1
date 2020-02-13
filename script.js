@@ -154,8 +154,7 @@ if (localStorage.favourites == undefined ){
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
 
-$(`.fav`).on("click", addFavourite);
-$(`.submitBtn`).on("click", scrollToRecipe);
+$(`.fa-heart-o`).on("click", addFavourite);
 
 $.ready(function(){
 
