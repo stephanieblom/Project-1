@@ -153,6 +153,11 @@ function scrollToRecipe(){
 }
 
 function checkIfFavourite(){
+
+    if(localStorage.favourites == undefined){
+        console.log(`Local storage is empty`)
+        return
+    }
     let pullFavourites = JSON.parse( localStorage.favourites );
     let check = pullFavourites.indexOf(recipeURL);
 
