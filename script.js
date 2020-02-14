@@ -247,6 +247,12 @@ $(`#letsCookBtn`).on("click", dataPull);
 $(`#nextBtn`).on("click", nextStep);
 $(`#backBtn`).on("click", prevStep);
 
+function scrollTosteps(){
+    $('html,body').animate({
+        scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
+        'slow');
+}
+
 // $("#firstStep").addClass("hide");
 // $("#startBtn").on("click", scrollTosteps);
 $("#startBtn").on("click", addFirstStep)
