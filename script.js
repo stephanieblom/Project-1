@@ -3,19 +3,27 @@ $('.recipeOverview').addClass('hide');
 $('.nutrientDetail').addClass('hide');
 $('.recipeIngredient').addClass('hide');
 $(".ingredientBtn").on('click', showIngreFunc);
+
 function showIngreFunc(){
     $('.recipeIngredient').removeClass('hide');
 }
 
 $("#letsCookBtn").on('click', showHideFunc);
+
 function showHideFunc(){
     $('.recipeOverview').removeClass('hide');
 }
 
-$(".recipeBtn").on('click', recipeBtn)
+$(".recipeBtn").on('click', recipeBtn);
+$(".recipeBtn").on("click", scrollToRecipeDetail);
 function recipeBtn(){
     $('.recipeDetail').removeClass('hide');
 };
+function scrollToRecipeDetail(){
+    $('html,body').animate({
+        scrollTop: $(".recipeDetail").offset().top- $(window).height()/12},
+        'slow');
+}
 
 $(".nutrientBtn").on('click', nutrientBtn);
 function nutrientBtn(){
