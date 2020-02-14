@@ -34,41 +34,58 @@
         <div class="viewPort">
             <section class="recipeOverview card col-lg-10 mx-auto">
                 <div class="card-body row">
-                    <div class="imgContent col-lg-4">
+                    <div class="card-body imgContent col-md-6">
                     </div>
-                    <div class="detailContent col-lg-8">
-                        <h2 class="">Recipe Title</h2>
-                        <p class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odio facere, earum libero dolore recusandae culpa</p>
-                        <button class="Btns recipeBtn">View Recipe</button>
-                        <button class="Btns nutrientBtn">Nutrition</button>
+                    <div class="card-body detailContent col-md-4">
+                        <h2 id="recipeTitle" class=""></h2>
+                        <p class="text-muted cookingTime"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time</p>
+                        <p id="recipeDescription"></p>
                     </div>
                     <div class="col-1 position-absolute">
-                        <a class="row favorite" ><i id = "changeHeart" class="fa fa-heart-o fa-lg fav" aria-hidden="true"></i></a>
-                        <hr>                        
+                        <a class="row favorite" ><i id = "changeHeart" class="fa fa-heart-o fa-lg fav" aria-hidden="true"></i></a>                        
                     </div>
+                </div>
+                <div class="card-body row mx-auto">
+                    <button class="col-lg-12 Btns mx-auto recipeBtn">View Recipe</button>
+                    <button class="col-lg-12 Btns mx-auto">View Ingredients list</button>
+                    <button class="col-lg-12 Btns mx-auto nutrientBtn">Nutrition</button>
                 </div>
             </section>
         </div>
+        <section class="recipeIngredient card col-lg-10 mx-auto">
+            <div class="card-body">
+                <div class="card-body row">
+                    <div class="ingredientRow">
+                        <div class="ingredientList col card-body">
+                            <h3>Ingredients</h3>
+                            <ul id="ingredientList2">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="recipeDetail card col-lg-10 mx-auto">
             <div class="card-body">
                 <div class="card-body row">
-                    <div class="rowsContent row">
-                        <div class="imgContent col-lg-4">
-                        </div>
-                        <div class="ingredientList col-lg-4">
-                            <h3>Ingredients</h3>
-                            <ul id="ingredientList">
-                            </ul>
+                    <div class="rowsContent card-body row">
+                        <div class="imgContent col-lg-8">
                         </div>
                         <div class="col-lg-3">
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: </p><p class="cookingTime"></p>
+                            <p class="cookingTime"></p>
                         </div>
                         <div class="col-1 position-absolute">
                             <a class="row favorite"><i id = "changeHeart2" class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
-                            <hr>
+                            <hr class="lineBreak">
                             <a class="row favorite" href="">
                                 <i class="fa fa-file-text-o fa-lg" aria-hidden="true"></i><i class="fa fa-lemon-o"aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="ingredientRow">
+                        <div class="ingredientList col card-body">
+                            <h3>Ingredients</h3>
+                            <ul id="ingredientList">
+                            </ul>
                         </div>
                     </div>
                     <div class="instructionDetail card-body">
@@ -92,9 +109,9 @@
                 </div>
                 <div class="card-body detailSteps detailContent mx-auto text-center">
                 </div>
-                <div class="card-body">
-                    <button class="submitBtn Btns mx-auto h4" id="backBtn">Back</button>
-                    <button class="submitBtn Btns mx-auto h4" id="nextBtn">Next</button>
+                <div class="card-body row mx-auto">
+                    <button class="submitBtn backNext Btns mx-auto h4" id="backBtn">Back</button>
+                    <button class="submitBtn backNext Btns mx-auto h4" id="nextBtn">Next</button>
                 </div>
             </section>
         </div>
