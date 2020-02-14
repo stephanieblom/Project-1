@@ -62,6 +62,12 @@ function dataPull(){
             $('#ingredientList').append(`<li>${ingredients[i]}</li>`);
     
         }
+        $('#ingredientList2').html("");
+        for(var i=0; i < ingredients.length; i++){
+    
+            $('#ingredientList2').append(`<li>${ingredients[i]}</li>`);
+    
+        }
     
         $('#instructionsList').html("");
         for(var i=0; i < instructions.length; i++){
