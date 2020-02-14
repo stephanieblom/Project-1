@@ -1,9 +1,15 @@
-$(".submitBtn").on('click', showHideFunc);
-
-function showHideFunc(){
 $('.recipeDetail').addClass('hide');
+$('.recipeOverview').addClass('hide');
 $('.nutrientDetail').addClass('hide');
-$('.recipeSteps').addClass('hide');
+$('.recipeIngredient').addClass('hide');
+$(".ingredientBtn").on('click', showIngreFunc);
+function showIngreFunc(){
+    $('.recipeIngredient').removeClass('hide');
+}
+
+$("#letsCookBtn").on('click', showHideFunc);
+function showHideFunc(){
+    $('.recipeOverview').removeClass('hide');
 }
 
 $(".recipeBtn").on('click', recipeBtn)
@@ -227,17 +233,8 @@ if (localStorage.favourites == undefined ){
 $(`.fa-heart-o`).on("click", switchFavourite);
 $("#firstStep").addClass("hide");
 
-$("#startBtn").on("click", addFirstStep)
-function addFirstStep(){
-    $("#firstStep").removeClass("hide");
-}
-
-
-
-
 $(`#letsCookBtn`).on("click", checkIfFavourite);
 
-// $(`.fav`).on("click", addFavourite);
 $(`#letsCookBtn`).on("click", scrollToRecipe);
 
 $(`#letsCookBtn`).on("click", dataPull);
@@ -245,15 +242,22 @@ $(`#letsCookBtn`).on("click", dataPull);
 $(`#nextBtn`).on("click", nextStep);
 $(`#backBtn`).on("click", prevStep);
 
+function scrollTosteps(){
+    $('html,body').animate({
+        scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
+        'slow');
+}
+
 // $("#firstStep").addClass("hide");
-$("#startBtn").on("click", addFirstStep);
-$("#startBtn").on("click", scrollTosteps);
+// $("#startBtn").on("click", scrollTosteps);
+$("#startBtn").on("click", addFirstStep)
 
 function addFirstStep(){
     $("#firstStep").removeClass("hide");
     $("#backBtn").addClass("hide");
     $('#stepIdx').text(`Step ${instructionIdx + 1 }`);
     $(".detailSteps").text(`${instructions[instructionIdx]}`);
+    scrollTosteps();
 }
 function scrollTosteps(){
     $('html,body').animate({
@@ -295,9 +299,7 @@ function prevStep(){
 // }
 
 
-$(`.submitBtn`).on("click", dataPull);
-
-
+$(`#letsCookBtn`).on("click", dataPull);
 
 });
 
