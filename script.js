@@ -211,7 +211,9 @@ function switchFavourite(){
 
 if (localStorage.favourites == undefined ){
     console.log(`Local storage is not yet defined: ${localStorage.favourites} once you add a favourite a variable will be created`);
+    $("#message").removeClass("hide");
 } else{
+    $("#message").addClass("hide");
     favourites = JSON.parse( localStorage.favourites );
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
