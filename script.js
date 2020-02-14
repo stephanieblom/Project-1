@@ -156,7 +156,6 @@ function switchFavourite(){
         addClass.classList.add("fa-heart-o");
         var removeClass = document.getElementById("changeHeart2")
         removeClass.classList.remove("fa-heart");
-
         var removeIdx = favourites.indexOf(recipeURL);
         var removedElements = favourites.splice(removeIdx, 1);
         console.log(`removed: ${removedElements}`)

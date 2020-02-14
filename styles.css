@@ -23,8 +23,8 @@ body {
 .urlInput {
     display: flex;
     flex-direction: column;
-    max-width: 65%;
-    max-width: 60%;
+    width: 65%;
+    min-width: 60%;
     margin: 0 auto;
 }
 .textArea, .submitBtn {
@@ -40,9 +40,7 @@ body {
     margin-right: 0;
     /* margin: 0; */
 }
-.submitBtn {
-    /* width: 80%; */
-}
+
 .Btns {
     display: block;
     border-radius: 25px;
@@ -63,6 +61,14 @@ body {
     padding: 10px;
     border-style: none;
 }
+.fa:hover {
+    color: orange;
+}
+
+.backNext {
+    width: 40%;
+    display: inline;
+}
 .cookingIcon {
     /* min-width: 15%; */
     max-width: 10%;
@@ -70,6 +76,15 @@ body {
 }
 .hide {
     display: none;
+}
+.ingredientList ul {
+    padding-left: 5px;
+}
+.ingredientList ul li {
+    float: left;
+    margin: 0 10px;
+    width: 30%;
+    padding: 0 10px;
 }
 /* .icon {
     width
@@ -98,7 +113,7 @@ img {
     height: auto;
 }
 .imgContent {
-    max-width: 50%;
+    max-width: 100%;
 }
 /* .rowsContent {
     display: flex;
@@ -106,7 +121,6 @@ img {
 } */
 .viewPort {
     width: 100%;
-    height: 100vh;
     padding: 100px 0;
 }
 
@@ -135,7 +149,11 @@ img {
 .navbar-toggler-icon {
     color: black;
 }
+.recipeIngredient {
+    margin: 50px 0;
+}
 .recipeSteps {
+    height: 100vh;
     background-image: linear-gradient(45deg, #8fcfe3, #d6ffed);
     /* height: 85vh; */
     padding: 10px;
@@ -146,3 +164,29 @@ img {
 .card {
     filter: drop-shadow(1px 1px 5px rgb(138, 140, 141));
 }
+
+
+@media only screen and (max-width: 716px) {
+    .ingredientList ul li {
+        float: left;
+        margin: 0 10px;
+        width: 45%;
+        padding: 0 10px;
+    }
+    #recipeTitle {
+        font-size: 1.5rem;
+    }
+  }
+
+  
+  @media only screen and (max-width: 517px) {
+    .ingredientList ul li {
+        float: none;
+        margin: 0 10px;
+        width: 100%;
+        padding: 0 10px;
+    }
+    .urlInput {
+        width: 100%;
+    }
+  }
