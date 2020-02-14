@@ -118,7 +118,7 @@ function dataPull(){
     
         }
     
-        //nutritionInfo();
+        nutritionInfo();
     
     });
 
@@ -127,10 +127,12 @@ function dataPull(){
 //ajax call pulling nutritional info on each ingredient 
 function nutritionInfo(){
 
+for(var i=0; i < ingredients.length; i++){
+
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": `https://edamam-edamam-nutrition-analysis.p.rapidapi.com/api/nutrition-data?ingr=${ingredients[0]}`,
+        "url": `https://edamam-edamam-nutrition-analysis.p.rapidapi.com/api/nutrition-data?ingr=${ingredients[i]}`,
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "edamam-edamam-nutrition-analysis.p.rapidapi.com",
@@ -140,18 +142,27 @@ function nutritionInfo(){
     
     $.ajax(settings).done(function (response) {
         console.log(response);
-
+        
         let calories = response.calories;
+
+        //display fat 
         let fat = response.totalNutrients.FAT.quantity; 
 
-        $('#nutritionInfo').append(`<li>${ingredients[0]} has ${calories} calories with ${fat} grams of fat</li>`);
+
+        //displ
+        console.log(`${ingredients[i]} has ${calories} calories with ${fat} grams of fat`)
+
+
+        $('#nutritionInfo').append(`<li>${ingredients[i]} has ${calories} calories with ${fat} grams of fat</li>`);
     });
+
+}
 
 }
 
 //When user clicks the screen scrolls down to the card with recipe snippet 
 function scrollToRecipe(){
-
+ 
     $('html,body').animate({
         scrollTop: $(".detailContent").offset().top- $(window).height()/3},
         'slow');
@@ -249,13 +260,6 @@ $(`#letsCookBtn`).on("click", dataPull);
 
 $(`#nextBtn`).on("click", nextStep);
 $(`#backBtn`).on("click", prevStep);
-
-function scrollTosteps(){
-    $('html,body').animate({
-        scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
-        'slow');
-}
-
 // $("#firstStep").addClass("hide");
 $("#startBtn").on("click", addFirstStep);
 $("#startBtn").on("click", scrollTosteps);
@@ -267,6 +271,7 @@ function addFirstStep(){
     $(".detailSteps").text(`${instructions[instructionIdx]}`);
 }
 function scrollTosteps(){
+
     $('html,body').animate({
         scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
         'slow');
@@ -306,7 +311,7 @@ function prevStep(){
 // }
 
 
-$(`.submitBtn`).on("click", dataPull);
+$(`#letsCookBtn`).on("click", dataPull);
 
 
 
@@ -349,15 +354,19 @@ if(localStorage.favourites == undefined ){
             <div class="col-md">
                 <div class="card" style="width: 18rem;">
                 <img src="${imgURL}" class="card-img-top" style="height: 300px; width: auto;">
-                <div class="card-body">
-                  <h5 class="card-title">${name}</h5>
-                  <button class="Btns">Open</button>
-                  <button class="Del">Remove</button>
-                </div>
+                    <div class="card-body">
+                    <h5 class="card-title">${name}</h5>
+                    <button id = "openFavourite" class="Btns">Open</button>
+                    <button class="Del">Remove</button>
+                    </div>
                </div>
             </div>`)
+
         });
     
     }
 };
+
+
+
 
