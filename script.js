@@ -104,6 +104,12 @@ function dataPull(){
             $('#ingredientList').append(`<li>${ingredients[i]}</li>`);
     
         }
+        $('#ingredientList2').html("");
+        for(var i=0; i < ingredients.length; i++){
+    
+            $('#ingredientList2').append(`<li>${ingredients[i]}</li>`);
+    
+        }
     
         $('#instructionsList').html("");
         for(var i=0; i < instructions.length; i++){
@@ -216,7 +222,9 @@ function switchFavourite(){
 
 if (localStorage.favourites == undefined ){
     console.log(`Local storage is not yet defined: ${localStorage.favourites} once you add a favourite a variable will be created`);
+    $("#message").removeClass("hide");
 } else{
+    $("#message").addClass("hide");
     favourites = JSON.parse( localStorage.favourites );
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
