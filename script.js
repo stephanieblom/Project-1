@@ -1,4 +1,3 @@
-
 $(".submitBtn").on('click', showHideFunc);
 
 function showHideFunc(){
@@ -294,4 +293,52 @@ $(`.submitBtn`).on("click", dataPull);
 
 });
 
+
+
+//Favourites page 
+
+if(localStorage.favourites == undefined ){
+    console.log(`no favs`)
+} else{
+    favourites = JSON.parse( localStorage.favourites )
+    for( var i = 0; i < favourites.length; i++){
+        recipeURL = favourites[i];
+        console.log(`Pulling data for URL: ${favourites[i]}`);
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi",
+        "method": "POST",
+        "headers": {
+            "x-rapidapi-host": "mycookbook-io1.p.rapidapi.com",
+            "x-rapidapi-key": "3b8a7d5c9dmsh20b4f77d73d4977p127a4fjsndd1100cc381e",
+            "content-type": "text/plain",
+            "accept": "text/plain"
+        },
+        "data": `${favourites[i]}`
+    }
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+
+        name = response[0].name;
+        imgURL = response[0].images[0];
+        console.log(`Appending card`)
+
+        $('#displayFavourites').append(`
+            <div class="col-md">
+                <div class="card" style="width: 18rem;">
+                <img src="${imgURL}" class="card-img-top" style="height: 300px; width: auto;">
+                <div class="card-body">
+                  <h5 class="card-title">${name}</h5>
+                  <button class="Btns">Open</button>
+                  <button class="Del">Remove</button>
+                </div>
+               </div>
+            </div>`)
+        });
+    
+    }
+};
 
