@@ -1,15 +1,59 @@
+
+$(".submitBtn").on('click', showHideFunc);
+
+function showHideFunc(){
+$('.recipeDetail').addClass('hide');
+$('.nutrientDetail').addClass('hide');
+$('.recipeSteps').addClass('hide');
+}
+
+$(".recipeBtn").on('click', recipeBtn)
+function recipeBtn(){
+    $('.recipeDetail').removeClass('hide');
+};
+
+$(".nutrientBtn").on('click', nutrientBtn);
+function nutrientBtn(){
+    $('.nutrientDetail').removeClass('hide');
+};
+
+let ingredients = [];
+
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi",
+	"method": "POST",
+	"headers": {
+		"x-rapidapi-host": "mycookbook-io1.p.rapidapi.com",
+		"x-rapidapi-key": "3b8a7d5c9dmsh20b4f77d73d4977p127a4fjsndd1100cc381e",
+		"content-type": "text/plain",
+		"accept": "text/plain"
+	},
+	"data": "https://www.thewholesomedish.com/the-best-classic-chili/"
+}
+
+$.ajax(settings).done(function (response) {
+    // console.log(response);
+    // console.log(response[0].ingredients);
+    // console.log(response[0].instructions[0].steps);
+
+    // let name = response[0].name;
+    // let img = response[0].images[0];
+    // ingredients = response[0].ingredients;
+    // let instructions = response[0].instructions[0].steps;
 let name = "";
 let imgURL = "";
 let description = "";
 let ingredients = [];
 let instructions = [];
+let instructionIdx = 0;
 let favourites = [];
 let recipeURL = "";
 let cookTime = "";
 
 
 
-//pulling recipe data and appending information to html 
 function dataPull(){
     recipeURL = $('#recipeURL').val();
     console.log(`Pulling data for URL: ${recipeURL}`);
@@ -175,8 +219,80 @@ if (localStorage.favourites == undefined ){
 }
 
 $(`.fa-heart-o`).on("click", switchFavourite);
+$("#firstStep").addClass("hide");
 
-$(`.submitBtn`).on("click", scrollToRecipe);
+$("#startBtn").on("click", addFirstStep)
+function addFirstStep(){
+    $("#firstStep").removeClass("hide");
+}
+
+
+
+
+$(`#letsCookBtn`).on("click", checkIfFavourite);
+
+// $(`.fav`).on("click", addFavourite);
+$(`#letsCookBtn`).on("click", scrollToRecipe);
+
+$(`#letsCookBtn`).on("click", dataPull);
+
+$(`#nextBtn`).on("click", nextStep);
+$(`#backBtn`).on("click", prevStep);
+
+// $("#firstStep").addClass("hide");
+$("#startBtn").on("click", addFirstStep);
+$("#startBtn").on("click", scrollTosteps);
+
+function addFirstStep(){
+    $("#firstStep").removeClass("hide");
+    $("#backBtn").addClass("hide");
+    $('#stepIdx').text(`Step ${instructionIdx + 1 }`);
+    $(".detailSteps").text(`${instructions[instructionIdx]}`);
+}
+function scrollTosteps(){
+    $('html,body').animate({
+        scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
+        'slow');
+}
+function nextStep(){
+    // alert(instructions[1]);
+    $("#backBtn").removeClass("hide");
+    if ( instructionIdx >= instructions.length - 1 ){
+        $("#nextBtn").addClass("hide");
+        return;
+    }
+    instructionIdx++;
+
+    console.log(`[nextStep] instructionIdx=${instructionIdx}`)
+    console.log("this is the list of " + instructions[instructionIdx])
+    $('#stepIdx').text(`Step ${instructionIdx + 1}`)
+    $('.detailSteps').text(`${instructions[instructionIdx]}`)
+}
+function prevStep(){
+    // alert(instructssions[1]);
+    if ( instructionIdx < 1 ){
+        return;
+    }
+    instructionIdx--;
+
+    console.log(`[nextStep] instructionIdx=${instructionIdx}`)
+    $('#stepIdx').text(`Step ${instructionIdx + 1}`)
+    $('.detailSteps').text(`${instructions[instructionIdx]}`)
+}
+
+
+//     // console.log(instructions[i]);
+// }
+// for (i=0; i<instructions.length; i++ ){
+//     $('.detailSteps').append(`<p>${instructions[i]}</p>`)
+// // 
+// }
+
+
 $(`.submitBtn`).on("click", dataPull);
-$(`.submitBtn`).on("click", checkIfFavourite);
+
+
+
+});
+
 
