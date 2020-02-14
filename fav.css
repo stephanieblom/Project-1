@@ -2,7 +2,7 @@
     background-image: url(https://i.pinimg.com/736x/7f/c3/68/7fc368a806702a5968b9baeb1ecfb76c.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 60vh;
+    height: 50vh;
     padding: 50px;
     background-position: center;
     margin-bottom: 4em;   
@@ -13,7 +13,7 @@
     font-size: 4em;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    margin-top: 100px;  
+    margin-top: 80px;  
     
 }
 .Btns , .Del{
@@ -60,4 +60,9 @@
 }
 .card {
     filter: drop-shadow(1px 1px 5px rgb(138, 140, 141));
+    margin-bottom: 20px;
 }
+.hide {
+    display: none;
+}
+
