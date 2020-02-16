@@ -44,6 +44,14 @@ function scrollToNutrientDetail(){
         scrollTop: $(".nutrientDetail").offset().top- $(window).height()/12},
         'slow');
 }
+$("#crossBtnIngredients").on('click', closeIngreCard);
+function closeIngreCard(){
+    $('.recipeIngredient').addClass('hide');
+}
+$("#crossBtnNutrients").on('click', closeNutriCard);
+function closeNutriCard(){
+    $('.nutrientDetail').addClass('hide');
+}
 
 let ingredients = [];
 
@@ -294,11 +302,17 @@ function nextStep(){
     $("#backBtn").removeClass("hide");
     if ( instructionIdx >= instructions.length - 1 ){
         $("#nextBtn").addClass("hide");
+        $('#stepIdx').text(`Congratulations!`)
+        $('.detailSteps').text(`You're Done!`)
+        $('.cookingPng').html(`
+        <img src="assets/confetti - left.png" class="cookingIcon mx-auto" alt="Responsive image">
+        <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">
+        <img src="assets/confetti - right.png" class="cookingIcon mx-auto" alt="Responsive image">`)
         return
     }
 
     instructionIdx++;
-
+    
     console.log(`[nextStep] instructionIdx=${instructionIdx}`)
     console.log("this is the list of " + instructions[instructionIdx])
     $('#stepIdx').text(`Step ${instructionIdx + 1}`)
@@ -318,6 +332,8 @@ function prevStep(){
 function activateNextBtn(){
     if ( instructionIdx < instructions.length - 1 & $("#nextBtn").hasClass("hide")){
         $("#nextBtn").removeClass("hide");
+        $('.cookingPng').html(`
+        <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">`)
     }
 }
 
