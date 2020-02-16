@@ -2,8 +2,16 @@ $('.recipeDetail').addClass('hide');
 $('.recipeOverview').addClass('hide');
 $('.nutrientDetail').addClass('hide');
 $('.recipeIngredient').addClass('hide');
-$(".ingredientBtn").on('click', showIngreFunc);
 
+
+$(".ingredientBtn").on('click', showIngreFunc);
+$(".ingredientBtn").on("click", scrollToIngredientsDetail);
+
+function scrollToIngredientsDetail(){
+    $('html,body').animate({
+        scrollTop: $(".recipeIngredient").offset().top- $(window).height()/3},
+        'slow');
+}
 function showIngreFunc(){
     $('.recipeIngredient').removeClass('hide');
 }
@@ -26,9 +34,16 @@ function scrollToRecipeDetail(){
 }
 
 $(".nutrientBtn").on('click', nutrientBtn);
+$(".nutrientBtn").on("click", scrollToNutrientDetail);
+
 function nutrientBtn(){
     $('.nutrientDetail').removeClass('hide');
 };
+function scrollToNutrientDetail(){
+    $('html,body').animate({
+        scrollTop: $(".nutrientDetail").offset().top- $(window).height()/12},
+        'slow');
+}
 
 let ingredients = [];
 
@@ -107,7 +122,7 @@ function dataPull(){
         $(`#recipeDescription`).append(description);
 
         $(`.cookingTime`).html("");
-        $(`.cookingTime`).append(cookTime);
+        $(`.cookingTime`).append(`<i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: ` + cookTime);
     
         $(`.imgContent`).html("");
         $(`.imgContent`).append(`<img src="${imgURL}" alt="Responsive picture of complete recipe" class="img-fluid">`)
@@ -173,6 +188,10 @@ function scrollToRecipe(){
 }
 
 function checkIfFavourite(){
+    if(localStorage.favourites == undefined){
+        console.log(`Local storage is empty`)
+        return
+    }
     let pullFavourites = JSON.parse( localStorage.favourites );
     let check = pullFavourites.indexOf(recipeURL);
 
@@ -224,7 +243,6 @@ function switchFavourite(){
         favourites.splice(removeIdx, 1); 
 
         localStorage.favourites = JSON.stringify( favourites );
-
     }
     
 }
@@ -249,6 +267,7 @@ $(`#letsCookBtn`).on("click", dataPull);
 
 $(`#nextBtn`).on("click", nextStep);
 $(`#backBtn`).on("click", prevStep);
+$(`#backBtn`).on("click", activateNextBtn);
 
 function scrollTosteps(){
     $('html,body').animate({
@@ -256,8 +275,7 @@ function scrollTosteps(){
         'slow');
 }
 
-// $("#firstStep").addClass("hide");
-// $("#startBtn").on("click", scrollTosteps);
+
 $("#startBtn").on("click", addFirstStep)
 
 function addFirstStep(){
@@ -273,12 +291,12 @@ function scrollTosteps(){
         'slow');
 }
 function nextStep(){
-    // alert(instructions[1]);
     $("#backBtn").removeClass("hide");
     if ( instructionIdx >= instructions.length - 1 ){
         $("#nextBtn").addClass("hide");
-        return;
+        return
     }
+
     instructionIdx++;
 
     console.log(`[nextStep] instructionIdx=${instructionIdx}`)
@@ -296,6 +314,11 @@ function prevStep(){
     console.log(`[nextStep] instructionIdx=${instructionIdx}`)
     $('#stepIdx').text(`Step ${instructionIdx + 1}`)
     $('.detailSteps').text(`${instructions[instructionIdx]}`)
+}
+function activateNextBtn(){
+    if ( instructionIdx < instructions.length - 1 & $("#nextBtn").hasClass("hide")){
+        $("#nextBtn").removeClass("hide");
+    }
 }
 
 
@@ -347,13 +370,13 @@ if(localStorage.favourites == undefined ){
         $('#displayFavourites').append(`
             <div class="col-md">
                 <div class="card" style="width: 18rem;">
-                <img src="${imgURL}" class="card-img-top" style="height: 300px; width: auto;">
-                <div class="card-body">
-                  <h5 class="card-title">${name}</h5>
-                  <button class="Btns">Open</button>
-                  <button class="Del">Remove</button>
-                </div>
-               </div>
+                    <img src="${imgURL}" class="card-img-top" style="height: 300px; width: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">${name}</h5>
+                        <button class="Btns">Open</button>
+                        <button class="Del">Remove</button>
+                    </div>
+                </div>                       
             </div>`)
         });
     
