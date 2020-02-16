@@ -43,7 +43,7 @@
                         <a class="row favorite" ><i id = "changeHeart" class="fa fa-heart-o fa-lg fav" aria-hidden="true"></i></a>                        
                     </div>
                 </div>
-                <div class="card-body row mx-auto">
+                <div class="card-body col">
                     <button class="col-lg-12 Btns mx-auto recipeBtn">View Recipe</button>
                     <button class="col-lg-12 Btns mx-auto ingredientBtn">View Ingredients list</button>
                     <button class="col-lg-12 Btns mx-auto nutrientBtn">Nutrition</button>
@@ -53,9 +53,11 @@
         <section class="recipeIngredient card col-lg-10 mx-auto">
             <div class="card-body">
                 <div class="card-body row">
+                    <div class="crossBtn col d-flex justify-content-end" id="crossBtnIngredients"><i class="fa fa-times" aria-hidden="true"></i></div>
                     <div class="ingredientRow">
                         <div class="ingredientList col card-body">
                             <h3>Ingredients</h3>
+                            <hr>
                             <ul id="ingredientList2">
                             </ul>
                         </div>
@@ -81,17 +83,22 @@
                     </div>
                     <div class="ingredientRow">
                         <div class="ingredientList col card-body">
+                            <hr>
                             <h3>Ingredients</h3>
+                            <hr>
                             <ul id="ingredientList">
                             </ul>
                         </div>
                     </div>
                     <div class="instructionDetail card-body">
+                        <hr>
                         <h3>Instructions</h3>
+                        <hr>
                         <p>
                             <ol id="instructionsList">
                             </ol>
                         </p>
+                        <hr>
                     </div>
                     <button class="Btns mx-auto" id="startBtn">Start</button>
                 </div>
@@ -99,8 +106,9 @@
         </section>
         <div class="hide" id="firstStep">
             <section class="recipeSteps col-lg-10 mx-auto">
-                <div class="card-body row mx-auto">
+                <div class="cookingPng card-body row mx-auto">
                     <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">
+                    
                 </div>
                 <div class="card-body row">
                     <h2 class="col-lg mx-auto text-center display-4" id="stepIdx"></h2>
@@ -115,6 +123,7 @@
         </div>
         <div class="viewPort">
             <section class="nutrientDetail card col-lg-10 mx-auto">
+                <div class="crossBtn card-body col d-flex justify-content-end" id="crossBtnNutrients"><i class="fa fa-times" aria-hidden="true"></i></div>
                 <div class="card-body row">
                     <h3>Nutrition Values</h3>
                     <table class="card-body table table-sm">

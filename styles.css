@@ -113,13 +113,6 @@ img {
     max-width: 100%;
     height: auto;
 }
-.imgContent {
-    max-width: 100%;
-}
-/* .rowsContent {
-    display: flex;
-    flex-direction: row;
-} */
 
 .viewPort {
     width: 100%;
