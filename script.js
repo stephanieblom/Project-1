@@ -300,16 +300,7 @@ function scrollTosteps(){
 }
 function nextStep(){
     $("#backBtn").removeClass("hide");
-    if ( instructionIdx >= instructions.length - 1 ){
-        $("#nextBtn").addClass("hide");
-        $('#stepIdx').text(`Congratulations!`)
-        $('.detailSteps').text(`You're Done!`)
-        $('.cookingPng').html(`
-        <img src="assets/confetti - left.png" class="cookingIcon mx-auto" alt="Responsive image">
-        <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">
-        <img src="assets/confetti - right.png" class="cookingIcon mx-auto" alt="Responsive image">`)
-        return
-    }
+    
 
     instructionIdx++;
     
@@ -317,6 +308,15 @@ function nextStep(){
     console.log("this is the list of " + instructions[instructionIdx])
     $('#stepIdx').text(`Step ${instructionIdx + 1}`)
     $('.detailSteps').text(`${instructions[instructionIdx]}`)
+    if ( instructionIdx >= instructions.length){
+        $("#nextBtn").addClass("hide");
+        $('#stepIdx').text(`Congratulations!`)
+        $('.detailSteps').text(`You're Done!`)
+        $('.cookingPng').html(`
+        <img src="assets/confetti - left.png" class="cookingIcon mx-auto" alt="Responsive image">
+        <img src="assets/confetti - right.png" class="cookingIcon mx-auto" alt="Responsive image">`)
+        return
+    }
 }
 function prevStep(){
     // alert(instructssions[1]);
@@ -330,7 +330,7 @@ function prevStep(){
     $('.detailSteps').text(`${instructions[instructionIdx]}`)
 }
 function activateNextBtn(){
-    if ( instructionIdx < instructions.length - 1 & $("#nextBtn").hasClass("hide")){
+    if ( instructionIdx < instructions.length & $("#nextBtn").hasClass("hide")){
         $("#nextBtn").removeClass("hide");
         $('.cookingPng').html(`
         <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">`)
