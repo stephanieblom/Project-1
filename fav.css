@@ -16,6 +16,13 @@
     margin-top: 80px;  
     
 }
+.title {
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin: 40px 0;
+    /* margin: 0 auto; */
+} 
 .Btns , .Del{
     display: block;
     border-radius: 25px;
@@ -68,4 +75,35 @@
 img {
     max-width: 100%;
     height: auto;
+}
+.ingredientList ul {
+    padding-left: 5px;
+}
+.ingredientList ul li {
+    float: left;
+    margin: 0 10px;
+    width: 30%;
+    padding: 0 10px;
+}
+.recipeIngredient {
+    margin: 50px 0;
+}
+.recipeSteps {
+    height: 100vh;
+    background-image: linear-gradient(45deg, #8fcfe3, #d6ffed);
+    /* height: 85vh; */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 50px auto;
+    filter: drop-shadow(1px 1px 5px rgb(138, 140, 141));
+}
+.backNext {
+    width: 40%;
+    display: inline;
+}
+
+.cookingIcon {
+    /* min-width: 15%; */
+    max-width: 10%;
+    margin: 0 10px;
 }

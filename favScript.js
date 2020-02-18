@@ -345,8 +345,8 @@ function nextStep(){
         $('#stepIdx').text(`Congratulations!`)
         $('.detailSteps').text(`You're Done!`)
         $('.cookingPng').html(`
-        <img src="assets/confetti - left.png" class="cookingIcon mx-auto" alt="Responsive image">
-        <img src="assets/confetti - right.png" class="cookingIcon mx-auto" alt="Responsive image">`)
+        <img src="assets/confetti - left.png" class="cookingIcon mx-auto col-lg-2" alt="Responsive image">
+        <img src="assets/confetti - right.png" class="cookingIcon mx-auto col-lg-2" alt="Responsive image">`)
         return
     }
 }

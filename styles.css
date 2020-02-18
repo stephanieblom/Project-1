@@ -65,8 +65,8 @@ body {
 }
 
 .backNext {
-    width: 40%;
     display: inline;
+    width: 40%;
 }
 .cookingIcon {
     /* min-width: 15%; */
