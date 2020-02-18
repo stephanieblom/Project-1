@@ -1,3 +1,4 @@
+//hiding recipe content until clicked on 
 $('.recipeDetail').addClass('hide');
 $('.recipeOverview').addClass('hide');
 $('.nutrientDetail').addClass('hide');
@@ -6,6 +7,52 @@ $('.recipeIngredient').addClass('hide');
 
 $(".ingredientBtn").on('click', showIngreFunc);
 $(".ingredientBtn").on("click", scrollToIngredientsDetail);
+
+let recipeLink = "";
+if(localStorage.favourites == undefined ){
+    console.log(`no favs`)
+} else{
+    favourites = JSON.parse( localStorage.favourites )
+    for( var i = 0; i < favourites.length; i++){
+        recipeURL = favourites[i];
+        console.log(`Pulling data for URL: ${favourites[i]}`);
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi",
+        "method": "POST",
+        "headers": {
+            "x-rapidapi-host": "mycookbook-io1.p.rapidapi.com",
+            "x-rapidapi-key": "3b8a7d5c9dmsh20b4f77d73d4977p127a4fjsndd1100cc381e",
+            "content-type": "text/plain",
+            "accept": "text/plain"
+        },
+        "data": `${favourites[i]}`
+    }
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+
+        name = response[0].name;
+        imgURL = response[0].images[0];
+        recipeLink = response[0].url;
+        console.log(`Appending card`)
+
+        $('#displayFavourites').append(`
+            <div class="col-md" data-URL = "${recipeLink}">
+                <div class="card" style="width: 18rem;">
+                    <img src="${imgURL}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${name}</h5>
+                        <button data-id = "${recipeLink}" class="openBtns Btns">Open</button>
+                        <button data-id = "${recipeLink}" class="Del">Remove</button>
+                    </div>
+                </div>                       
+            </div>`)
+        });
+    }
+};
 
 function scrollToIngredientsDetail(){
     $('html,body').animate({
@@ -16,11 +63,11 @@ function showIngreFunc(){
     $('.recipeIngredient').removeClass('hide');
 }
 
-$("#letsCookBtn").on('click', showHideFunc);
 
 function showHideFunc(){
     $('.recipeOverview').removeClass('hide');
 }
+
 
 $(".recipeBtn").on('click', recipeBtn);
 $(".recipeBtn").on("click", scrollToRecipeDetail);
@@ -89,11 +136,10 @@ let recipeURL = "";
 let cookTime = "";
 
 
-
 function dataPull(){
-    recipeURL = $('#recipeURL').val();
+    recipeURL = $(this).data("id");
     console.log(`Pulling data for URL: ${recipeURL}`);
-
+    
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -121,7 +167,6 @@ function dataPull(){
         description = response[0].description;
         cookTime = response[0][`total-time`];
         cookTime = cookTime.slice(2,10);
-
 
         $(`#recipeTitle`).html("")
         $(`#recipeTitle`).append(name);
@@ -189,7 +234,7 @@ function nutritionInfo(){
         if(!response.calories){
             console.log(`Data not available for this ingredient`)
         } else {
-            calories = response.calories
+            calories = response.calories;
         }
 
         //display fat 
@@ -235,71 +280,11 @@ $(".nutrientBtn").on("click", nutritionInfo);
 
 //When user clicks the screen scrolls down to the card with recipe snippet 
 function scrollToRecipe(){
- 
+
     $('html,body').animate({
         scrollTop: $(".detailContent").offset().top- $(window).height()/3},
         'slow');
 
-}
-
-function checkIfFavourite(){
-    if(localStorage.favourites == undefined){
-        console.log(`Local storage is empty`)
-        return
-    }
-    let pullFavourites = JSON.parse( localStorage.favourites );
-    let check = pullFavourites.indexOf(recipeURL);
-
-    if (check > 0){
-         //changing favourites icon at 2 spots on page 
-         var addClass = document.getElementById("changeHeart")
-         addClass.classList.add("fa-heart");
-         var removeClass = document.getElementById("changeHeart")
-         removeClass.classList.remove("fa-heart-o");
-         var addClass = document.getElementById("changeHeart2")
-         addClass.classList.add("fa-heart");
-         var removeClass = document.getElementById("changeHeart2")
-         removeClass.classList.remove("fa-heart-o");
-    }
-}
-
-//Adds URL of recipe to array in local storage so user can access as a favourite for later
-function switchFavourite(){
-
-    if($( ".fav" ).hasClass( "fa-heart" ) == false ){
-
-        //add url to local storage
-        favourites.push(`${recipeURL}`)
-        localStorage.favourites = JSON.stringify( favourites );
-
-        //changing favourites icon at 2 spots on page 
-        var addClass = document.getElementById("changeHeart")
-        addClass.classList.add("fa-heart");
-        var removeClass = document.getElementById("changeHeart")
-        removeClass.classList.remove("fa-heart-o");
-        var addClass = document.getElementById("changeHeart2")
-        addClass.classList.add("fa-heart");
-        var removeClass = document.getElementById("changeHeart2")
-        removeClass.classList.remove("fa-heart-o");
-
-    } else if($( ".fav" ).hasClass( "fa-heart-o" ) == false ){
-
-        var addClass = document.getElementById("changeHeart")
-        addClass.classList.add("fa-heart-o");
-        var removeClass = document.getElementById("changeHeart")
-        removeClass.classList.remove("fa-heart");
-        var addClass = document.getElementById("changeHeart2")
-        addClass.classList.add("fa-heart-o");
-        var removeClass = document.getElementById("changeHeart2")
-        removeClass.classList.remove("fa-heart");
-        var removeIdx = favourites.indexOf(recipeURL);
-        var removedElements = favourites.splice(removeIdx, 1);
-        console.log(`removed: ${removedElements}`)
-        favourites.splice(removeIdx, 1); 
-
-        localStorage.favourites = JSON.stringify( favourites );
-    }
-    
 }
 
 if (localStorage.favourites == undefined ){
@@ -311,14 +296,13 @@ if (localStorage.favourites == undefined ){
     console.log(`Local Storage: ${localStorage.favourites}`)
 }
 
-$(`.fa-heart-o`).on("click", switchFavourite);
+// $(`.fa-heart-o`).on("click", switchFavourite);
 $("#firstStep").addClass("hide");
 
-$(`#letsCookBtn`).on("click", checkIfFavourite);
+$(`.openBtns`).on("click", showHideFunc);
+$(`.openBtns`).on("click", scrollToRecipe);
 
-$(`#letsCookBtn`).on("click", scrollToRecipe);
-
-$(`#letsCookBtn`).on("click", dataPull);
+$(`.openBtns`).on("click", dataPull);
 
 $(`#nextBtn`).on("click", nextStep);
 $(`#backBtn`).on("click", prevStep);
@@ -330,7 +314,6 @@ function scrollTosteps(){
         'slow');
 }
 
-
 $("#startBtn").on("click", addFirstStep)
 
 function addFirstStep(){
@@ -341,7 +324,6 @@ function addFirstStep(){
     scrollTosteps();
 }
 function scrollTosteps(){
-
     $('html,body').animate({
         scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
         'slow');
@@ -349,7 +331,6 @@ function scrollTosteps(){
 function nextStep(){
     $("#backBtn").removeClass("hide");
     
-
     instructionIdx++;
     
     console.log(`[nextStep] instructionIdx=${instructionIdx}`)
@@ -385,10 +366,26 @@ function activateNextBtn(){
     }
 }
 
+function removeFavourite(){
+
+    recipeURL = $(this).data("id")
+
+    favourites = JSON.parse( localStorage.favourites );
+    var removeIdx = favourites.indexOf(recipeURL);
+    var removedElements = favourites.splice(removeIdx, 1);
+    console.log(`removed: ${removedElements}`)
+    favourites.splice(removeIdx, 1); 
+
+    localStorage.favourites = JSON.stringify( favourites );
+    //$(``).addClass("hide");
+
+    $(this).parent().parent().parent().addClass('hide');
+
+}
+    
+$(`.Del`).on("click", removeFavourite);
+
 
 });
-
-
-
 
 

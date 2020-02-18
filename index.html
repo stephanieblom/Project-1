@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cooking for Dummies</title>
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/4b53ea2f0f.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
@@ -30,7 +29,6 @@
                 <button class="Btns mx-auto" id="letsCookBtn">Lets Cook</button>
             </div>
         </section>
-       
         <div class="viewPort">
             <section class="recipeOverview card col-lg-10 mx-auto">
                 <div class="card-body row">
@@ -45,7 +43,7 @@
                         <a class="row favorite" ><i id = "changeHeart" class="fa fa-heart-o fa-lg fav" aria-hidden="true"></i></a>                        
                     </div>
                 </div>
-                <div class="card-body row mx-auto">
+                <div class="card-body col">
                     <button class="col-lg-12 Btns mx-auto recipeBtn">View Recipe</button>
                     <button class="col-lg-12 Btns mx-auto ingredientBtn">View Ingredients list</button>
                     <button class="col-lg-12 Btns mx-auto nutrientBtn">Nutrition</button>
@@ -55,9 +53,13 @@
         <section class="recipeIngredient card col-lg-10 mx-auto">
             <div class="card-body">
                 <div class="card-body row">
+                    <div class="crossBtn col d-flex justify-content-end" id="crossBtnIngredients">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
                     <div class="ingredientRow">
                         <div class="ingredientList col card-body">
                             <h3>Ingredients</h3>
+                            <hr>
                             <ul id="ingredientList2">
                             </ul>
                         </div>
@@ -83,17 +85,22 @@
                     </div>
                     <div class="ingredientRow">
                         <div class="ingredientList col card-body">
+                            <hr>
                             <h3>Ingredients</h3>
+                            <hr>
                             <ul id="ingredientList">
                             </ul>
                         </div>
                     </div>
                     <div class="instructionDetail card-body">
+                        <hr>
                         <h3>Instructions</h3>
+                        <hr>
                         <p>
                             <ol id="instructionsList">
                             </ol>
                         </p>
+                        <hr>
                     </div>
                     <button class="Btns mx-auto" id="startBtn">Start</button>
                 </div>
@@ -101,8 +108,9 @@
         </section>
         <div class="hide" id="firstStep">
             <section class="recipeSteps col-lg-10 mx-auto">
-                <div class="card-body row mx-auto">
+                <div class="cookingPng card-body row mx-auto">
                     <img src="assets/cooking.png" class="cookingIcon mx-auto" alt="Responsive image">
+                    
                 </div>
                 <div class="card-body row">
                     <h2 class="col-lg mx-auto text-center display-4" id="stepIdx"></h2>
@@ -117,10 +125,22 @@
         </div>
         <div class="viewPort">
             <section class="nutrientDetail card col-lg-10 mx-auto">
+                <div class="crossBtn card-body col d-flex justify-content-end" id="crossBtnNutrients"><i class="fa fa-times" aria-hidden="true"></i></div>
                 <div class="card-body row">
                     <h3>Nutrition Values</h3>
-                    <ul>
-                    </ul>
+                    <table class="card-body table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ingredients</th>
+                                <th scope="col">Calories</th>
+                                <th scope="col">Fat</th>
+                                <th scope="col">Carbs</th>
+                                <th scope="col">Sugar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="nutrientTableBody">
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
