@@ -155,7 +155,6 @@ function dataPull(){
     
         }
     
-        //nutritionInfo();
     
     });
 
@@ -164,10 +163,14 @@ function dataPull(){
 //ajax call pulling nutritional info on each ingredient 
 function nutritionInfo(){
 
+    
+    for(var i=0; i < ingredients.length; i++){
+        console.log(`searing for ${ingredients[i]}`);
+        let ingredient = ingredients[i];
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": `https://edamam-edamam-nutrition-analysis.p.rapidapi.com/api/nutrition-data?ingr=${ingredients[0]}`,
+        "url": `https://edamam-edamam-nutrition-analysis.p.rapidapi.com/api/nutrition-data?ingr=${ingredients[i]}`,
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "edamam-edamam-nutrition-analysis.p.rapidapi.com",
@@ -177,18 +180,65 @@ function nutritionInfo(){
     
     $.ajax(settings).done(function (response) {
         console.log(response);
+        
+        let calories = "unavailable";
+        let fat = "unavailable";
+        let sugars = "unavailable";
+        let carbs = "unavailable";
 
-        let calories = response.calories;
-        let fat = response.totalNutrients.FAT.quantity; 
+        if(!response.calories){
+            console.log(`Data not available for this ingredient`)
+        } else {
+            let cal = response.calories;
+            calories = cal.toFixed(1);
+        }
 
-        $('#nutritionInfo').append(`<li>${ingredients[0]} has ${calories} calories with ${fat} grams of fat</li>`);
+        //display fat 
+        if( !response.totalNutrients.FAT || !response.totalNutrients.FAT.quantity ){
+            console.log(`data is unavilable`)
+        }else {
+            let fat = response.totalNutrients.FAT.quantity;
+            fats = fat.toFixed(1);
+        }
+
+        if( !response.totalNutrients.SUGAR.quantity){
+            console.log(`data is unavilable`)
+        }else {
+            sugar = response.totalNutrients.SUGAR.quantity;
+            sugars = sugar.toFixed(1);
+        }
+
+        if( !response.totalNutrients.CHOCDF.quantity){
+            console.log(`data is unavilable`)
+        }else {
+            let carb = response.totalNutrients.SUGAR.quantity;
+            carbs = carb.toFixed(1)
+        }
+
+        $('#nutrientTableBody').append(`<tr>
+        <td class="ingredient">${ingredient}</td>
+        <td class="caloriesValue">${calories}</td>
+        <td class="fatValue">${fat}</td>
+        <td class="carbValue">${carbs}</td>
+        <td class="sugarValue">${sugars}</td>
+        </tr>`)
+
+    
+        //displ
+        console.log(`${ingredient} has ${calories} calories with ${fat} grams of fat, ${sugars} grams of sugars, ${carbs} grams of carbs`)
+
+        
     });
 
 }
 
+}
+
+$(".nutrientBtn").on("click", nutritionInfo);
+
 //When user clicks the screen scrolls down to the card with recipe snippet 
 function scrollToRecipe(){
-
+ 
     $('html,body').animate({
         scrollTop: $(".detailContent").offset().top- $(window).height()/3},
         'slow');
@@ -294,6 +344,7 @@ function addFirstStep(){
     scrollTosteps();
 }
 function scrollTosteps(){
+
     $('html,body').animate({
         scrollTop: $(".detailSteps").offset().top- $(window).height()/2},
         'slow');
@@ -338,64 +389,9 @@ function activateNextBtn(){
 }
 
 
-//     // console.log(instructions[i]);
-// }
-// for (i=0; i<instructions.length; i++ ){
-//     $('.detailSteps').append(`<p>${instructions[i]}</p>`)
-// // 
-// }
-
-
-$(`#letsCookBtn`).on("click", dataPull);
-
 });
 
 
 
-//Favourites page 
 
-if(localStorage.favourites == undefined ){
-    console.log(`no favs`)
-} else{
-    favourites = JSON.parse( localStorage.favourites )
-    for( var i = 0; i < favourites.length; i++){
-        recipeURL = favourites[i];
-        console.log(`Pulling data for URL: ${favourites[i]}`);
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi",
-        "method": "POST",
-        "headers": {
-            "x-rapidapi-host": "mycookbook-io1.p.rapidapi.com",
-            "x-rapidapi-key": "3b8a7d5c9dmsh20b4f77d73d4977p127a4fjsndd1100cc381e",
-            "content-type": "text/plain",
-            "accept": "text/plain"
-        },
-        "data": `${favourites[i]}`
-    }
-    
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-
-        name = response[0].name;
-        imgURL = response[0].images[0];
-        console.log(`Appending card`)
-
-        $('#displayFavourites').append(`
-            <div class="col-md">
-                <div class="card" style="width: 18rem;">
-                    <img src="${imgURL}" class="card-img-top" style="height: 300px; width: auto;">
-                    <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <button class="Btns">Open</button>
-                        <button class="Del">Remove</button>
-                    </div>
-                </div>                       
-            </div>`)
-        });
-    
-    }
-};
 
