@@ -227,47 +227,50 @@ function nutritionInfo(){
         console.log(response);
         
         let calories = "unavailable";
-        let fat = "unavailable";
+        let fats = "unavailable";
         let sugars = "unavailable";
         let carbs = "unavailable";
 
         if(!response.calories){
             console.log(`Data not available for this ingredient`)
         } else {
-            calories = response.calories;
+            let cal = response.calories;
+            calories = cal.toFixed(1);
         }
 
         //display fat 
         if( !response.totalNutrients.FAT || !response.totalNutrients.FAT.quantity ){
             console.log(`data is unavilable`)
         }else {
-            fat = response.totalNutrients.FAT.quantity;
+            let fat = response.totalNutrients.FAT.quantity;
+            fats = fat.toFixed(1);
         }
 
         if( !response.totalNutrients.SUGAR.quantity){
             console.log(`data is unavilable`)
         }else {
-
-            sugars = response.totalNutrients.SUGAR.quantity;
+            sugar = response.totalNutrients.SUGAR.quantity;
+            sugars = sugar.toFixed(1);
         }
 
         if( !response.totalNutrients.CHOCDF.quantity){
             console.log(`data is unavilable`)
         }else {
-            carbs = response.totalNutrients.SUGAR.quantity;
+            let carb = response.totalNutrients.SUGAR.quantity;
+            carbs = carb.toFixed(1)
         }
 
         $('#nutrientTableBody').append(`<tr>
         <td class="ingredient">${ingredient}</td>
         <td class="caloriesValue">${calories}</td>
-        <td class="fatValue">${fat}</td>
+        <td class="fatValue">${fats}</td>
         <td class="carbValue">${carbs}</td>
         <td class="sugarValue">${sugars}</td>
         </tr>`)
 
     
         //displ
-        console.log(`${ingredient} has ${calories} calories with ${fat} grams of fat, ${sugars} grams of sugars, ${carbs} grams of carbs`)
+        console.log(`${ingredient} has ${calories} calories with ${fats} grams of fat, ${sugars} grams of sugars, ${carbs} grams of carbs`)
 
         
     });

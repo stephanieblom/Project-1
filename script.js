@@ -189,27 +189,30 @@ function nutritionInfo(){
         if(!response.calories){
             console.log(`Data not available for this ingredient`)
         } else {
-            calories = response.calories
+            let cal = response.calories;
+            calories = cal.toFixed(1);
         }
 
         //display fat 
         if( !response.totalNutrients.FAT || !response.totalNutrients.FAT.quantity ){
             console.log(`data is unavilable`)
         }else {
-            fat = response.totalNutrients.FAT.quantity;
+            let fat = response.totalNutrients.FAT.quantity;
+            fats = fat.toFixed(1);
         }
 
         if( !response.totalNutrients.SUGAR.quantity){
             console.log(`data is unavilable`)
         }else {
-
-            sugars = response.totalNutrients.SUGAR.quantity;
+            sugar = response.totalNutrients.SUGAR.quantity;
+            sugars = sugar.toFixed(1);
         }
 
         if( !response.totalNutrients.CHOCDF.quantity){
             console.log(`data is unavilable`)
         }else {
-            carbs = response.totalNutrients.SUGAR.quantity;
+            let carb = response.totalNutrients.SUGAR.quantity;
+            carbs = carb.toFixed(1)
         }
 
         $('#nutrientTableBody').append(`<tr>
